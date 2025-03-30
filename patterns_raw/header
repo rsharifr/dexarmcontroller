@@ -1,8 +1,8 @@
-; HEADER FROM ROTRIX STUDIO FOR DEXARM
+;--------- HEADER FROM ROTRIX STUDIO FOR DEXARM
 
 M2000;custom:line mode
 M888 P0;custom:header is write&draw
 
-; END OF DEXARM HEADER
+;--------- END OF DEXARM HEADER
 
 
