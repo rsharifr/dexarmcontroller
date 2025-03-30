@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # Navigate to the directory containing dexarmControl.py
-cd /home/dexarmControl/DexArm_controller
+cd /home/dexarm/dexarmcontroller
 
 # Activate the virtual environment (if applicable)
 # source ./venv/bin/activate

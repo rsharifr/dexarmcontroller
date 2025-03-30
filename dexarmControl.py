@@ -2,6 +2,7 @@ from pydexarm import Dexarm
 from os import listdir
 from os import path
 import random
+import time
 
 robotConnected = True
 
@@ -43,5 +44,6 @@ while True:
     resetPage()
     thisPattern = random.sample(listOfPatterns, 1) # pick 1 random pattern from the list
     drawPattern(thisPattern[0])
+    time.sleep(60)
 
 
