@@ -34,7 +34,7 @@ def drawPattern(pattern):
             print(command)  
             if robotConnected:
                 # send it to robot                
-                dexarm._send_cmd(command)  
+                dexarm._send_cmd(command, timeout = 60)  
 
 def resetPage(): # a script to rest the page.
     drawPattern('../reset.gcode')

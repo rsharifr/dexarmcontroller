@@ -1,6 +1,7 @@
 
 import serial
 import re
+import time
 
 class Dexarm:
     """ Python class for Dexarm
@@ -18,7 +19,7 @@ class Dexarm:
         else:
             print('failed to open serial port')
 
-    def _send_cmd(self, data, wait=True):
+    def _send_cmd(self, data, wait=True, timeout = 60):
         """
         Send command to the arm.
 
@@ -27,8 +28,10 @@ class Dexarm:
             wait (bool): wait for response from the arm (ok) or not.
                 If True, this function will block until the arm response "ok"
                 If False, this function will not block here. But the command could be ignored if buffer of the arm is full.
+            timeout (int): if Wait=True, the arm waits a maximum time equal to timeout (in seconds) before moving to the next command.    
         """
         self.ser.write(data.encode())
+        sendTime = time.time()
         if not wait:
             self.ser.reset_input_buffer()
             return
@@ -38,6 +41,11 @@ class Dexarm:
                 if serial_str.find("ok") > -1:
                     print("read ok")
                     break
+                elif serial_str.find("wait") > -1:
+                    print("read：", serial_str)
+                    if time.time()-sendTime > timeout:
+                        print("Command execution timed out")
+                        break
                 else:
                     print("read：", serial_str)
 
