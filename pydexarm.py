@@ -12,6 +12,8 @@ class Dexarm:
         Args:
             port (string): the serial port of Dexarm, e.g, "COM3"
         """
+        print("Dexarm is initiating connection with robot")
+        
         self.ser = serial.Serial(port, 115200, timeout=None)
         self.is_open = self.ser.isOpen()
         if self.is_open:

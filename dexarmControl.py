@@ -1,3 +1,5 @@
+print("Python code 'dexarmController.py' started")
+
 from pydexarm import Dexarm
 from os import listdir
 from os import path
@@ -6,12 +8,15 @@ import time
 
 robotConnected = True
 
+time.sleep(30)
+
 # Connect to robot
 if robotConnected:
     '''windows'''
     # dexarm = Dexarm(port="COM67")
     '''mac & linux'''
     dexarm = Dexarm(port="/dev/ttyACM0")
+
 
 # List all files in the patterns directory
 patternFolder = "patterns"
