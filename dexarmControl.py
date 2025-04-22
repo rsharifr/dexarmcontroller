@@ -33,13 +33,13 @@ def drawPattern(pattern):
         # Read each line in the file
         for line in file:
             line = line.strip(); # .strip() removes any leading/trailing whitespace.
-            if line=="" or line[0]==";":
+            if line=="" or line[0]==";" or line[0]=="(":
                 continue
             command = line.strip()+"\r\n"  # we need end of line characters \n and \r. Let's have both just to be sure
             print(command)  
             if robotConnected:
                 # send it to robot                
-                dexarm._send_cmd(command, timeout = 60)  
+                dexarm._send_cmd(command, timeout = 30)  
 
 def resetPage(): # a script to rest the page.
     drawPattern('../reset.gcode')
