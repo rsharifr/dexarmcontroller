@@ -8,7 +8,8 @@ import time
 
 robotConnected = True
 
-time.sleep(30)
+time.sleep(15)
+
 
 # Connect to robot
 if robotConnected:
@@ -17,6 +18,11 @@ if robotConnected:
     '''mac & linux'''
     dexarm = Dexarm(port="/dev/ttyACM0")
 
+
+dexarm._send_cmd("M1112\r\n")
+
+
+time.sleep(15)
 
 # List all files in the patterns directory
 patternFolder = "patterns"
