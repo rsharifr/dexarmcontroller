@@ -3,6 +3,7 @@ print("Python code 'dexarmController.py' started")
 from pydexarm import Dexarm
 from os import listdir
 from os import path
+import subprocess
 import random
 import time
 
@@ -52,6 +53,10 @@ def resetPage(): # a script to rest the page.
 
 # Loop forever
 while True:
+    try:
+        subprocess.run(["git", "pull"], check=True)
+    except subprocess.CalledProcessError as e:
+        print("Git pull failed:", e)    
     resetPage()
     thisPattern = random.sample(listOfPatterns, 1) # pick 1 random pattern from the list
     drawPattern(thisPattern[0])
